@@ -1,10 +1,35 @@
+#Karla Roman
+#kvr160030@utdallas.edu
+#CS 3377.002
 
 
+
+#include the professor's include and lib folder
+#with the cdk and the curses
 CXX = g++
-CXXFLAGS = -g
-CPPFLAGS= Wall -l ~/Program6/include
+CXXFLAGS = -Wall -g
+CPPFLAGS=-I/scratch/perkins/include
+LDFLAGS = -L /scratch/perkins/lib
+LDLIBS = -lcdk -lcurses 
 
 
+#to execute program using ./program6
+EXECFILE = program6
+OBJS = program6.o
+
+all:$(EXECFILE)
+
+#remove files that are not needed
+clean:
+	rm -f $(OBJS) $(EXECFILE) *.P *~ \#*
+
+
+#use objective files for execution
+$(EXECFILE): $(OBJS)
+	$(CXX) -o $@ $(OBJS) $(LDFLAGS) $(LDLIBS)
+
+
+#YIKES! create a backup just in case something goes wrong
 backup:
 	@make clean
 	@mkdir -p ~/backups; chmod 700 ~/backups
