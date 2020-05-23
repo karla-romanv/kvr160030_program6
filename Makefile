@@ -1,6 +1,4 @@
 #Karla Roman
-#kvr160030@utdallas.edu
-#CS 3377.002
 
 
 
